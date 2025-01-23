@@ -1,13 +1,18 @@
-.App {
+ *{background-color: rgba(55, 134, 134, 0.559);
+  color:whitesmoke;
   text-align: center;
   font-family: Arial, sans-serif;
 }
 
-.choices button {
-  margin: 10px;
+.choices button  {
+  margin: 10px ;
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
+}
+h1{
+  border-style:solid;
+  padding:40px;
 }
 
 .results h2 {

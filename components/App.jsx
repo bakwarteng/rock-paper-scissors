@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import "../assets/App.css";
-import "../assets/index.css";
-
-const choices = ["Rock", "Paper", "Scissors"];
 
 const App = () => {
   const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
+  const [userScore, setUserScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
   const [result, setResult] = useState("");
+
+  const choices = ["Rock✊", "Paper🤚", "Scissors✌"];
 
   const determineWinner = (user, computer) => {
     if (user === computer) {
-      return "It's a tie!";
+      setResult("It's a tie!");
     } else if (
-      (user === "Rock" && computer === "Scissors") ||
-      (user === "Paper" && computer === "Rock") ||
-      (user === "Scissors" && computer === "Paper")
+      (user === "Rock✊" && computer === "Scissors✌") ||
+      (user === "Paper🤚" && computer === "Rock✊") ||
+      (user === "Scissors✌" && computer === "Paper🤚")
     ) {
-      return "You win!";
+      setUserScore((prevScore) => prevScore + 1);
+      setResult("You Win!");
     } else {
-      return "You lose!";
+      setComputerScore((prevScore) => prevScore + 1);
+      setResult("You lost this round, Computer Wins!");
     }
   };
 
@@ -28,7 +31,7 @@ const App = () => {
       choices[Math.floor(Math.random() * choices.length)];
     setUserChoice(choice);
     setComputerChoice(computerRandomChoice);
-    setResult(determineWinner(choice, computerRandomChoice));
+    determineWinner(choice, computerRandomChoice);
   };
 
   return (
@@ -44,7 +47,9 @@ const App = () => {
       <div className="results">
         <h2>Your Choice: {userChoice}</h2>
         <h2>Computer's Choice: {computerChoice}</h2>
-        <h2>Result: {result}</h2>
+        <h2>{result}</h2>
+        <h2>Your Score: {userScore}</h2>
+        <h2>Computer's Score: {computerScore}</h2>
       </div>
     </div>
   );
